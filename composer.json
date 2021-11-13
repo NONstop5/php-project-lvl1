@@ -1,15 +1,21 @@
 {
     "name": "hexlet/code",
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
+    "bin": [
+        "bin/brain-games"
+    ],
+    "type": "library",
     "authors": [
         {
             "name": "NONstop",
             "email": "non_2002@mail.ru"
         }
     ],
+    "description": "hexlet php-project-lvl1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
     "require": {}
 }
