@@ -1,7 +1,8 @@
 {
     "name": "hexlet/code",
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even"
     ],
     "type": "library",
     "authors": [
@@ -17,7 +18,8 @@
             "App\\": "src/"
         },
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/BrainEven.php"
         ]
     },
     "require": {
