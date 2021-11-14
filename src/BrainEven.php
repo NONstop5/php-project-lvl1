@@ -19,7 +19,7 @@ function even(): void
     line('Answer "yes" if the number is even, otherwise answer "no".');
 
     for ($i = 1; $i <= 3; $i++) {
-        $number = rand();
+        $number = rand(0, 100);
         line("Question: {$number}");
         $answer = prompt('Your answer');
 
