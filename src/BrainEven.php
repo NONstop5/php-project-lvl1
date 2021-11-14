@@ -30,7 +30,10 @@ function even(): void
             continue;
         }
 
-        exit("'{$answer}' is wrong answer ;(. Correct answer was '{$answerEvenMap[$isEven]}'." . PHP_EOL . "Let's try again, {$name}!" . PHP_EOL);
+        exit(
+            "'{$answer}' is wrong answer ;(. Correct answer was '{$answerEvenMap[$isEven]}'." .
+            PHP_EOL . "Let's try again, {$name}!" . PHP_EOL
+        );
     }
 
     line("Congratulations, {$name}!");
