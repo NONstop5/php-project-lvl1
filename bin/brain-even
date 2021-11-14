@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+use function App\BrainEven\even;
+
+require_once __DIR__ . '/../src/autoload.php';
+
+even();
