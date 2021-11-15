@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+use function App\BrainCalc\calc;
+
+require_once __DIR__ . '/../src/autoload.php';
+
+calc();
