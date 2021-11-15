@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace App\BrainEven;
 
 use function App\Cli\welcome;
+use function App\Engine\exitWithText;
 use function cli\line;
 use function cli\prompt;
+
+use const App\Engine\MAX_NUMBER;
+use const App\Engine\ROUND_COUNT;
 
 function even(): void
 {
@@ -18,8 +22,8 @@ function even(): void
 
     line('Answer "yes" if the number is even, otherwise answer "no".');
 
-    for ($i = 1; $i <= 3; $i++) {
-        $number = rand(0, 100);
+    for ($i = 1; $i <= ROUND_COUNT; $i++) {
+        $number = rand(0, MAX_NUMBER);
         line("Question: {$number}");
         $answer = prompt('Your answer');
 
@@ -30,10 +34,7 @@ function even(): void
             continue;
         }
 
-        exit(
-            "'{$answer}' is wrong answer ;(. Correct answer was '{$answerEvenMap[$isEven]}'." .
-            PHP_EOL . "Let's try again, {$name}!" . PHP_EOL
-        );
+        exitWithText($answer, $answerEvenMap[$isEven], $name);
     }
 
     line("Congratulations, {$name}!");
