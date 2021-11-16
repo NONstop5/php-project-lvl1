@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\BrainGcd;
+namespace App\Games\BrainGcd;
 
-use function App\Cli\welcome;
 use function App\Engine\exitWithText;
+use function App\Engine\getAnswer;
+use function App\Engine\showCongratulation;
+use function App\Engine\showOkText;
+use function App\Engine\showQuestion;
+use function App\Games\Cli\welcome;
 use function cli\line;
-use function cli\prompt;
 
 use const App\Engine\MAX_NUMBER;
 use const App\Engine\ROUND_COUNT;
@@ -44,16 +47,16 @@ function gcd(): void
             }
         }
 
-        line("Question: {$number1} {$number2}");
-        $answer = prompt('Your answer');
+        showQuestion("{$number1} {$number2}");
+        $answer = getAnswer();
 
         if ($node === (int)$answer) {
-            line('Correct!');
+            showOkText();
             continue;
         }
 
-        exitWithText($answer, $node, $name);
+        exitWithText($answer, (string)$node, $name);
     }
 
-    line("Congratulations, {$name}!");
+    showCongratulation($name);
 }

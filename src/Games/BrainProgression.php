@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\BrainProgression;
+namespace App\Games\BrainProgression;
 
-use function App\Cli\welcome;
 use function App\Engine\exitWithText;
+use function App\Engine\getAnswer;
+use function App\Engine\showCongratulation;
+use function App\Engine\showOkText;
+use function App\Engine\showQuestion;
+use function App\Games\Cli\welcome;
 use function cli\line;
-use function cli\prompt;
 
 use const App\Engine\ROUND_COUNT;
 
@@ -45,16 +48,16 @@ function progression(): void
 
         $question = implode(' ', $numbers);
 
-        line("Question: {$question}");
-        $answer = prompt('Your answer');
+        showQuestion($question);
+        $answer = getAnswer();
 
         if ($answerNumber === (int)$answer) {
-            line('Correct!');
+            showOkText();
             continue;
         }
 
-        exitWithText($answer, $answerNumber, $name);
+        exitWithText($answer, (string)$answerNumber, $name);
     }
 
-    line("Congratulations, {$name}!");
+    showCongratulation($name);
 }

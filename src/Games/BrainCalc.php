@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\BrainCalc;
+namespace App\Games\BrainCalc;
 
-use function App\Cli\welcome;
 use function App\Engine\exitWithText;
+use function App\Engine\getAnswer;
+use function App\Engine\showCongratulation;
+use function App\Engine\showOkText;
+use function App\Engine\showQuestion;
+use function App\Games\Cli\welcome;
 use function cli\line;
-use function cli\prompt;
 
 use const App\Engine\MAX_NUMBER;
 use const App\Engine\ROUND_COUNT;
@@ -17,7 +20,7 @@ function calc(): void
     $operators = [
         '+',
         '-',
-        '*'
+        '*',
     ];
     $operations = [
         fn($operand1, $operand2) => $operand1 + $operand2,
@@ -35,16 +38,16 @@ function calc(): void
         $operator = $operators[$operatorNumber];
         $expressionResult = $operations[$operatorNumber]($operand1, $operand2);
 
-        line("Question: {$operand1} {$operator} {$operand2}");
-        $answer = prompt('Your answer');
+        showQuestion("{$operand1} {$operator} {$operand2}");
+        $answer = getAnswer();
 
         if ($expressionResult === (int)$answer) {
-            line('Correct!');
+            showOkText();
             continue;
         }
 
         exitWithText($answer, $expressionResult, $name);
     }
 
-    line("Congratulations, {$name}!");
+    showCongratulation($name);
 }
