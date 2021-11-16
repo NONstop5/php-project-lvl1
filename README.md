@@ -1,7 +1,4 @@
 ##Проект "Игры разума"
-###Requirements
-- PHP 8.0 or higher
-- Composer 2.1.3 or higher
 
 ###Клонирование репозитория
 >`git clone git@github.com:NONstop5/php-project-lvl1.git`
