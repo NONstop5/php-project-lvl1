@@ -3,7 +3,8 @@
     "bin": [
         "bin/brain-games",
         "bin/brain-even",
-        "bin/brain-calc"
+        "bin/brain-calc",
+        "bin/brain-gcd"
     ],
     "type": "library",
     "authors": [
@@ -19,10 +20,11 @@
             "App\\": "src/"
         },
         "files": [
+            "src/Engine.php",
             "src/Cli.php",
             "src/BrainEven.php",
             "src/BrainCalc.php",
-            "src/Engine.php"
+            "src/BrainGcd.php"
         ]
     },
     "require": {
