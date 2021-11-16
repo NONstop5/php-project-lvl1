@@ -4,7 +4,8 @@
         "bin/brain-games",
         "bin/brain-even",
         "bin/brain-calc",
-        "bin/brain-gcd"
+        "bin/brain-gcd",
+        "bin/brain-progression"
     ],
     "type": "library",
     "authors": [
@@ -24,7 +25,8 @@
             "src/Cli.php",
             "src/BrainEven.php",
             "src/BrainCalc.php",
-            "src/BrainGcd.php"
+            "src/BrainGcd.php",
+            "src/BrainProgression.php"
         ]
     },
     "require": {
