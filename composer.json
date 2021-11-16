@@ -5,7 +5,8 @@
         "bin/brain-even",
         "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-progression"
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "type": "library",
     "authors": [
@@ -22,11 +23,12 @@
         },
         "files": [
             "src/Engine.php",
-            "src/Cli.php",
-            "src/BrainEven.php",
-            "src/BrainCalc.php",
-            "src/BrainGcd.php",
-            "src/BrainProgression.php"
+            "src/Games/Cli.php",
+            "src/Games/BrainEven.php",
+            "src/Games/BrainCalc.php",
+            "src/Games/BrainGcd.php",
+            "src/Games/BrainProgression.php",
+            "src/Games/BrainPrime.php"
         ]
     },
     "require": {

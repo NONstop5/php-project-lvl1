@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use function App\BrainProgression\progression;
+use function App\Games\BrainProgression\progression;
 
 require_once __DIR__ . '/../src/autoload.php';
 

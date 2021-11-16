@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use function App\BrainGcd\gcd;
+use function App\Games\BrainGcd\gcd;
 
 require_once __DIR__ . '/../src/autoload.php';
 

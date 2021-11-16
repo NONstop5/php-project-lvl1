@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use function App\Cli\welcome;
+use function App\Games\Cli\welcome;
 
 require_once __DIR__ . '/../src/autoload.php';
 
