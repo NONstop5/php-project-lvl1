@@ -46,7 +46,7 @@ function calc(): void
             continue;
         }
 
-        exitWithText($answer, $expressionResult, $name);
+        exitWithText($answer, (string)$expressionResult, $name);
     }
 
     showCongratulation($name);
