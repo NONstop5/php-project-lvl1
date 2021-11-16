@@ -1,10 +1,12 @@
-##Проект "Игры разума"
+## Проект "Игры разума"
 
-###Клонирование репозитория
+### Клонирование репозитория
 >`git clone git@github.com:NONstop5/php-project-lvl1.git`
-###Установка зависимостей
+
+### Установка зависимостей
 >`make install`
-###Запуск игр
+
+### Запуск игр
 >`make brain-games` (<a href="https://asciinema.org/a/HgxpZLY5b4RHAS5GK88lzUgse">Demo</a>)
 >
 >`make brain-even` (<a href="https://asciinema.org/a/86HWnyrRkx029m0gWVZUYL90h">Demo</a>)
