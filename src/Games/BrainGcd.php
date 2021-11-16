@@ -27,7 +27,7 @@ function gcd(): void
     for ($i = 1; $i <= ROUND_COUNT; $i++) {
         $node = null;
 
-        while ($node !== null) {
+        while ($node === null) {
             $number1 = rand(0, MAX_NUMBER);
             $number2 = rand(0, MAX_NUMBER);
 
