@@ -1,6 +1,6 @@
 ##Проект "Игры разума"
 ###Requirements
-- PHP 7.3 or higher
+- PHP 7.4 or higher
 - Composer 2.1.3 or higher
 
 ###Клонирование репозитория
