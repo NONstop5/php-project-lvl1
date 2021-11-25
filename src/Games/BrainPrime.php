@@ -6,10 +6,11 @@ namespace App\Games\BrainPrime;
 
 use function App\Engine\exitWithText;
 use function App\Engine\getAnswer;
+use function App\Engine\isNumberPrime;
 use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
-use function App\Games\Cli\welcome;
+use function App\Cli\welcome;
 use function cli\line;
 
 use const App\Engine\MAX_NUMBER;
@@ -30,14 +31,7 @@ function prime(): void
         showQuestion((string)$number);
         $answer = getAnswer();
 
-        $isPrime = true;
-
-        for ($n = 2; $n < $number - 1; $n++) {
-            if ($number % $n === 0) {
-                $isPrime = false;
-                break;
-            }
-        }
+        $isPrime = isNumberPrime($number);
 
         if ($answer === $answerPrimeMap[$isPrime]) {
             showOkText();
