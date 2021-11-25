@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Games\BrainPrime;
 
 use function App\Engine\exitWithText;
-use function App\Engine\getAnswer;
 use function App\Engine\isNumberPrime;
 use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
@@ -28,8 +27,7 @@ function prime(): void
 
     for ($i = 1; $i <= ROUND_COUNT; $i++) {
         $number = rand(1, MAX_NUMBER);
-        showQuestion((string)$number);
-        $answer = getAnswer();
+        $answer = showQuestion((string)$number);
 
         $isPrime = isNumberPrime($number);
 
