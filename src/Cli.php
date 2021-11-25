@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Games\Cli;
+namespace App\Cli;
 
 use function cli\line;
 use function cli\prompt;
