@@ -23,19 +23,16 @@ function showCongratulation(string $name): void
     line("Congratulations, {$name}!");
 }
 
-function showQuestion(string $question): void
+function showQuestion(string $question): string
 {
     line("Question: {$question}");
+
+    return prompt('Your answer');
 }
 
 function showOkText(): void
 {
     line('Correct!');
-}
-
-function getAnswer(): string
-{
-    return prompt('Your answer');
 }
 
 function isNumberPrime(int $number): bool
