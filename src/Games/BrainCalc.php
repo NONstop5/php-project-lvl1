@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Games\BrainCalc;
 
 use function App\Engine\exitWithText;
-use function App\Engine\getAnswer;
 use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
-use function App\Games\Cli\welcome;
+use function App\Cli\welcome;
 use function cli\line;
 
 use const App\Engine\MAX_NUMBER;
@@ -38,8 +37,7 @@ function calc(): void
         $operator = $operators[$operatorNumber];
         $expressionResult = $operations[$operatorNumber]($operand1, $operand2);
 
-        showQuestion("{$operand1} {$operator} {$operand2}");
-        $answer = getAnswer();
+        $answer = showQuestion("{$operand1} {$operator} {$operand2}");
 
         if ($expressionResult === (int)$answer) {
             showOkText();
