@@ -21,5 +21,5 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/NONstop5/php-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/NONstop5/php-project-lvl1/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/148000b789a7e37b5259/maintainability)](https://codeclimate.com/github/NONstop5/php-project-lvl1/maintainability)
 ![Lint status](https://github.com/NONstop5/php-project-lvl1/actions/workflows/workflow.yml/badge.svg)
