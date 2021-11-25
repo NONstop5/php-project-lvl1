@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Games\BrainEven;
 
 use function App\Engine\exitWithText;
-use function App\Engine\getAnswer;
 use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
-use function App\Games\Cli\welcome;
+use function App\Cli\welcome;
 use function cli\line;
 
 use const App\Engine\MAX_NUMBER;
@@ -27,8 +26,7 @@ function even(): void
 
     for ($i = 1; $i <= ROUND_COUNT; $i++) {
         $number = rand(0, MAX_NUMBER);
-        showQuestion((string)$number);
-        $answer = getAnswer();
+        $answer = showQuestion((string)$number);
 
         $isEven = $number % 2 === 0;
 
