@@ -18,12 +18,9 @@
     "description": "hexlet php-project-lvl1",
     "license": "MIT",
     "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        },
         "files": [
             "src/Engine.php",
-            "src/Games/Cli.php",
+            "src/Cli.php",
             "src/Games/BrainEven.php",
             "src/Games/BrainCalc.php",
             "src/Games/BrainGcd.php",
