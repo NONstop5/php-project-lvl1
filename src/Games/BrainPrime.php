@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Games\BrainPrime;
 
+use function App\Cli\welcome;
 use function App\Engine\exitWithText;
-use function App\Engine\isNumberPrime;
 use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
-use function App\Cli\welcome;
 use function cli\line;
 
 use const App\Engine\MAX_NUMBER;
@@ -40,4 +39,18 @@ function prime(): void
     }
 
     showCongratulation($name);
+}
+
+function isNumberPrime(int $number): bool
+{
+    $isPrime = true;
+
+    for ($n = 2; $n < $number - 1; $n++) {
+        if ($number % $n === 0) {
+            $isPrime = false;
+            break;
+        }
+    }
+
+    return $isPrime;
 }
