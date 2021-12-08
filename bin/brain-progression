@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use function App\Games\BrainProgression\progression;
+use function App\Engine\runGame;
 
 require_once __DIR__ . '/../src/autoload.php';
 
-progression();
+runGame('progression');
