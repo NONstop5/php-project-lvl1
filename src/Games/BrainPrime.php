@@ -49,14 +49,11 @@ function prime(): array
 
 function isNumberPrime(int $number): bool
 {
-    $isPrime = true;
-
     for ($n = 2; $n < $number - 1; $n++) {
         if ($number % $n === 0) {
-            $isPrime = false;
-            break;
+            return false;
         }
     }
 
-    return $isPrime;
+    return true;
 }
