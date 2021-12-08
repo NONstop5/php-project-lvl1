@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Games\BrainEven;
 
-use function App\Engine\exitWithText;
-use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
-use function App\Cli\welcome;
 use function cli\line;
 
 use const App\Engine\MAX_NUMBER;
 use const App\Engine\ROUND_COUNT;
 
-function even(): void
+function even(): array
 {
+    $isGameResultSuccessful = true;
+    $answer = null;
+    $correctAnswer = null;
+
     $answerEvenMap = [
         true => 'yes',
         false => 'no',
     ];
-    $name = welcome();
 
     line('Answer "yes" if the number is even, otherwise answer "no".');
 
@@ -29,14 +29,20 @@ function even(): void
         $answer = showQuestion((string)$number);
 
         $isEven = $number % 2 === 0;
+        $correctAnswer = $answerEvenMap[$isEven];
 
         if (($answer === 'yes' && $isEven) || ($answer === 'no' && !$isEven)) {
             showOkText();
             continue;
         }
 
-        exitWithText($answer, $answerEvenMap[$isEven], $name);
+        $isGameResultSuccessful = false;
+        break;
     }
 
-    showCongratulation($name);
+    return [
+        $isGameResultSuccessful,
+        $answer,
+        $correctAnswer,
+    ];
 }
