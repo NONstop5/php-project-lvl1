@@ -4,36 +4,40 @@ declare(strict_types=1);
 
 namespace App\Games\BrainGcd;
 
-use function App\Engine\exitWithText;
-use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
-use function App\Cli\welcome;
 use function cli\line;
 
 use const App\Engine\MAX_NUMBER;
 use const App\Engine\ROUND_COUNT;
 
-function gcd(): void
+function gcd(): array
 {
-    $name = welcome();
+    $isGameResultSuccessful = true;
+    $answer = null;
+    $correctAnswer = null;
 
     line('Find the greatest common divisor of given numbers.');
 
     for ($i = 1; $i <= ROUND_COUNT; $i++) {
         [$numbers, $correctAnswer] = getNumbersAndMaxDivisor();
 
-        $answer = showQuestion($numbers);
+        $answer = (int)showQuestion($numbers);
 
-        if ($correctAnswer === (int)$answer) {
+        if ($correctAnswer === $answer) {
             showOkText();
             continue;
         }
 
-        exitWithText($answer, (string)$correctAnswer, $name);
+        $isGameResultSuccessful = false;
+        break;
     }
 
-    showCongratulation($name);
+    return [
+        $isGameResultSuccessful,
+        $answer,
+        $correctAnswer,
+    ];
 }
 
 function getNumbersAndMaxDivisor()

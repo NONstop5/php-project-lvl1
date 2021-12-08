@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Games\BrainPrime;
 
-use function App\Cli\welcome;
-use function App\Engine\exitWithText;
-use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
 use function cli\line;
@@ -14,13 +11,16 @@ use function cli\line;
 use const App\Engine\MAX_NUMBER;
 use const App\Engine\ROUND_COUNT;
 
-function prime(): void
+function prime(): array
 {
+    $isGameResultSuccessful = true;
+    $answer = null;
+    $correctAnswer = null;
+
     $answerPrimeMap = [
         true => 'yes',
         false => 'no',
     ];
-    $name = welcome();
 
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
 
@@ -29,16 +29,22 @@ function prime(): void
         $answer = showQuestion((string)$number);
 
         $isPrime = isNumberPrime($number);
+        $correctAnswer = $answerPrimeMap[$isPrime];
 
-        if ($answer === $answerPrimeMap[$isPrime]) {
+        if ($answer === $correctAnswer) {
             showOkText();
             continue;
         }
 
-        exitWithText($answer, $answerPrimeMap[$isPrime], $name);
+        $isGameResultSuccessful = false;
+        break;
     }
 
-    showCongratulation($name);
+    return [
+        $isGameResultSuccessful,
+        $answer,
+        $correctAnswer,
+    ];
 }
 
 function isNumberPrime(int $number): bool

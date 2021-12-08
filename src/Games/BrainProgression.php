@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Games\BrainProgression;
 
-use function App\Cli\welcome;
-use function App\Engine\exitWithText;
-use function App\Engine\showCongratulation;
 use function App\Engine\showOkText;
 use function App\Engine\showQuestion;
 use function cli\line;
@@ -18,26 +15,33 @@ const PROGRESSION_MAX_COUNT = 10;
 const PROGRESSION_MIN_STEP = 1;
 const PROGRESSION_MAX_STEP = 5;
 
-function progression(): void
+function progression(): array
 {
-    $name = welcome();
+    $isGameResultSuccessful = true;
+    $answer = null;
+    $correctAnswer = null;
 
     line('What number is missing in the progression?');
 
     for ($i = 1; $i <= ROUND_COUNT; $i++) {
         [$progression, $correctAnswer] = getProgressionData();
 
-        $answer = showQuestion($progression);
+        $answer = (int)showQuestion($progression);
 
-        if ($correctAnswer === (int)$answer) {
+        if ($correctAnswer === $answer) {
             showOkText();
             continue;
         }
 
-        exitWithText($answer, (string)$correctAnswer, $name);
+        $isGameResultSuccessful = false;
+        break;
     }
 
-    showCongratulation($name);
+    return [
+        $isGameResultSuccessful,
+        $answer,
+        $correctAnswer,
+    ];
 }
 
 function getProgressionData(): array
