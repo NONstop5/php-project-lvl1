@@ -48,6 +48,10 @@ function runGame(string $gameName): void
 {
     $gameNameModuleMap = [
         'even' => '\App\Games\BrainEven\even',
+        'calc' => '\App\Games\BrainCalc\calc',
+        'gcd' => '\App\Games\BrainGcd\gcd',
+        'progression' => '\App\Games\BrainProgression\progression',
+        'prime' => '\App\Games\BrainPrime\prime',
     ];
 
     $name = welcome();
