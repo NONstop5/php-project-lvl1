@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use function App\Engine\runGame;
+use function App\Games\BrainEven\run;
 
 require_once __DIR__ . '/../src/autoload.php';
 
-runGame('even');
+run();

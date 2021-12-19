@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use function App\Engine\runGame;
+use function App\Games\BrainPrime\run;
 
 require_once __DIR__ . '/../src/autoload.php';
 
-runGame('prime');
+run();
