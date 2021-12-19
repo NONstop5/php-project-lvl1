@@ -35,11 +35,11 @@ function calc(): array
     $expressionResult = $operations[$operatorNumber]($operand1, $operand2);
 
     $question = "{$operand1} {$operator} {$operand2}";
-    $correctAnswer = (string)$expressionResult;
+    $correctAnswer = $expressionResult;
 
     return [
         'gameDescription' => $gameDescription,
         'question' => $question,
-        'correctAnswer' => $correctAnswer,
+        'correctAnswer' => (string)$correctAnswer,
     ];
 }
