@@ -10,31 +10,6 @@ use function cli\prompt;
 const ROUND_COUNT = 3;
 const MAX_NUMBER = 100;
 
-function exitWithText(string $answer, string $correctAnswer, string $name): void
-{
-    exit(
-        "'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'." .
-        PHP_EOL . "Let's try again, {$name}!" . PHP_EOL
-    );
-}
-
-function showCongratulation(string $name): void
-{
-    line("Congratulations, {$name}!");
-}
-
-function showQuestion(string $question): string
-{
-    line("Question: {$question}");
-
-    return prompt('Your answer');
-}
-
-function showOkText(): void
-{
-    line('Correct!');
-}
-
 function welcome(): string
 {
     line('Welcome to the Brain Game!');
@@ -44,28 +19,37 @@ function welcome(): string
     return $name;
 }
 
+function exitWithText(string $userAnswer, string $correctAnswer, string $userName): void
+{
+    exit(
+        "'{$userAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'." .
+        PHP_EOL . "Let's try again, {$userName}!" . PHP_EOL
+    );
+}
+
 function runGame(string $gameName): void
 {
-    $gameNameModuleMap = [
-        'even' => '\App\Games\BrainEven\even',
-        'calc' => '\App\Games\BrainCalc\calc',
-        'gcd' => '\App\Games\BrainGcd\gcd',
-        'progression' => '\App\Games\BrainProgression\progression',
-        'prime' => '\App\Games\BrainPrime\prime',
-    ];
+    $userName = welcome();
 
-    $name = welcome();
+    for ($i = 1; $i <= ROUND_COUNT; $i++) {
+        [
+            'gameDescription' => $gameDescription,
+            'question' => $question,
+            'correctAnswer' => $correctAnswer,
+        ] = $gameName();
 
-    $gameResult = $gameNameModuleMap[$gameName]();
+        line($gameDescription);
 
-    [$isGameResultSuccessful, $answer, $correctAnswer] = $gameResult;
+        line("Question: {$question}");
 
-    if ($isGameResultSuccessful) {
-        showCongratulation($name);
-    } else {
-        line(
-            "'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'." .
-            PHP_EOL . "Let's try again, {$name}!" . PHP_EOL
-        );
+        $userAnswer = prompt('Your answer');
+
+        if ($userAnswer !== $correctAnswer) {
+            exitWithText($userAnswer, $correctAnswer, $userName);
+        }
+
+        line('Correct!');
     }
+
+    line("Congratulations, {$userName}!");
 }
