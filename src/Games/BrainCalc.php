@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Games\BrainCalc;
 
-use function App\Engine\showOkText;
-use function App\Engine\showQuestion;
-use function cli\line;
+use function App\Engine\runGame;
 
 use const App\Engine\MAX_NUMBER;
-use const App\Engine\ROUND_COUNT;
+
+function run(): void
+{
+    runGame('\App\Games\BrainCalc\calc');
+}
 
 function calc(): array
 {
-    $isGameResultSuccessful = true;
-    $answer = null;
-    $correctAnswer = null;
+    $gameDescription = 'What is the result of the expression?';
 
     $operators = [
         '+',
@@ -28,30 +28,18 @@ function calc(): array
         fn($operand1, $operand2) => $operand1 * $operand2,
     ];
 
-    line('What is the result of the expression?');
+    $operand1 = rand(0, MAX_NUMBER);
+    $operand2 = rand(0, MAX_NUMBER);
+    $operatorNumber = rand(0, (count($operators) - 1));
+    $operator = $operators[$operatorNumber];
+    $expressionResult = $operations[$operatorNumber]($operand1, $operand2);
 
-    for ($i = 1; $i <= ROUND_COUNT; $i++) {
-        $operand1 = rand(0, MAX_NUMBER);
-        $operand2 = rand(0, MAX_NUMBER);
-        $operatorNumber = rand(0, (count($operators) - 1));
-        $operator = $operators[$operatorNumber];
-        $expressionResult = $operations[$operatorNumber]($operand1, $operand2);
-
-        $answer = (int)showQuestion("{$operand1} {$operator} {$operand2}");
-        $correctAnswer = $expressionResult;
-
-        if ($expressionResult === $answer) {
-            showOkText();
-            continue;
-        }
-
-        $isGameResultSuccessful = false;
-        break;
-    }
+    $question = "{$operand1} {$operator} {$operand2}";
+    $correctAnswer = (string)$expressionResult;
 
     return [
-        $isGameResultSuccessful,
-        $answer,
-        $correctAnswer,
+        'gameDescription' => $gameDescription,
+        'question' => $question,
+        'correctAnswer' => $correctAnswer,
     ];
 }

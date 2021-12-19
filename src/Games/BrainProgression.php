@@ -4,43 +4,31 @@ declare(strict_types=1);
 
 namespace App\Games\BrainProgression;
 
-use function App\Engine\showOkText;
-use function App\Engine\showQuestion;
-use function cli\line;
-
-use const App\Engine\ROUND_COUNT;
+use function App\Engine\runGame;
 
 const PROGRESSION_MIN_COUNT = 5;
 const PROGRESSION_MAX_COUNT = 10;
 const PROGRESSION_MIN_STEP = 1;
 const PROGRESSION_MAX_STEP = 5;
 
+function run(): void
+{
+    runGame('\App\Games\BrainProgression\progression');
+}
+
 function progression(): array
 {
-    $isGameResultSuccessful = true;
-    $answer = null;
-    $correctAnswer = null;
+    $gameDescription = 'What number is missing in the progression?';
 
-    line('What number is missing in the progression?');
-
-    for ($i = 1; $i <= ROUND_COUNT; $i++) {
-        [$progression, $correctAnswer] = getProgressionData();
-
-        $answer = (int)showQuestion($progression);
-
-        if ($correctAnswer === $answer) {
-            showOkText();
-            continue;
-        }
-
-        $isGameResultSuccessful = false;
-        break;
-    }
+    [
+        'question' => $question,
+        'correctAnswer' => $correctAnswer,
+    ] = getProgressionData();
 
     return [
-        $isGameResultSuccessful,
-        $answer,
-        $correctAnswer,
+        'gameDescription' => $gameDescription,
+        'question' => $question,
+        'correctAnswer' => (string)$correctAnswer,
     ];
 }
 
@@ -67,7 +55,7 @@ function getProgressionData(): array
     }
 
     return [
-        implode(' ', $numbers),
-        $answerNumber,
+        'question' => implode(' ', $numbers),
+        'correctAnswer' => $answerNumber,
     ];
 }
