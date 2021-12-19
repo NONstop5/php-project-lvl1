@@ -31,6 +31,6 @@ function even(): array
     return [
         'gameDescription' => $gameDescription,
         'question' => $question,
-        'correctAnswer' => (string)$correctAnswer,
+        'correctAnswer' => $correctAnswer,
     ];
 }

@@ -31,7 +31,7 @@ function prime(): array
     return [
         'gameDescription' => $gameDescription,
         'question' => $question,
-        'correctAnswer' => (string)$correctAnswer,
+        'correctAnswer' => $correctAnswer,
     ];
 }
 
