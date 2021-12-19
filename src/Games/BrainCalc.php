@@ -10,7 +10,7 @@ use const App\Engine\MAX_NUMBER;
 
 function run(): void
 {
-    runGame('\App\Games\BrainCalc\calc');
+    runGame(fn() => calc());
 }
 
 function calc(): array

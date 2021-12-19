@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Engine;
 
+use Closure;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -27,7 +29,7 @@ function exitWithText(string $userAnswer, string $correctAnswer, string $userNam
     );
 }
 
-function runGame(string $gameName): void
+function runGame(Closure $gameName): void
 {
     $userName = welcome();
 

@@ -10,7 +10,7 @@ use const App\Engine\MAX_NUMBER;
 
 function run(): void
 {
-    runGame('\App\Games\BrainPrime\prime');
+    runGame(fn() => prime());
 }
 
 function prime(): array

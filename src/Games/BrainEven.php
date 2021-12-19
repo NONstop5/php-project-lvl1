@@ -10,7 +10,7 @@ use const App\Engine\MAX_NUMBER;
 
 function run(): void
 {
-    runGame('\App\Games\BrainEven\even');
+    runGame(fn() => even());
 }
 
 function even(): array

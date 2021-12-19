@@ -13,7 +13,7 @@ const PROGRESSION_MAX_STEP = 5;
 
 function run(): void
 {
-    runGame('\App\Games\BrainProgression\progression');
+    runGame(fn() => progression());
 }
 
 function progression(): array
