@@ -8,7 +8,7 @@
         "bin/brain-progression",
         "bin/brain-prime"
     ],
-    "type": "library",
+    "type": "project",
     "authors": [
         {
             "name": "NONstop",
