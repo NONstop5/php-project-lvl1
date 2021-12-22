@@ -6,7 +6,7 @@ namespace App\Games\BrainProgression;
 
 use function App\Engine\runGame;
 
-const PROGRESSION_MIN_COUNT = 5;
+const PROGRESSION_MIN_COUNT = 6;
 const PROGRESSION_MAX_COUNT = 10;
 const PROGRESSION_MIN_STEP = 1;
 const PROGRESSION_MAX_STEP = 5;
