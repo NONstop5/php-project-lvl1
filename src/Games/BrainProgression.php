@@ -6,7 +6,7 @@ namespace App\Games\BrainProgression;
 
 use function App\Engine\runGame;
 
-const PROGRESSION_MIN_COUNT = 6;
+const PROGRESSION_MIN_COUNT = 5;
 const PROGRESSION_MAX_COUNT = 10;
 const PROGRESSION_MIN_STEP = 1;
 const PROGRESSION_MAX_STEP = 5;
@@ -39,7 +39,7 @@ function getProgressionData(): array
 
     $progression = getProgression($progressionFirstElement, $progressionStep, $progressionCount);
     $correctAnswer = getProgressionElement($progressionFirstElement, $progressionStep, $progressionMissingNumber);
-    $progression[$progressionMissingNumber - 1] = '...';
+    $progression[$progressionMissingNumber - 1] = '..';
 
     return [
         'question' => implode(' ', $progression),
