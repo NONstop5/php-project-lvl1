@@ -47,7 +47,7 @@ function generateData(): array
     ];
 }
 
-function getGreatestCommonDivisor($number1, $number2): ?int
+function getGreatestCommonDivisor(int $number1, int $number2): ?int
 {
     $maxNumber = $number1;
     $minNumber = $number2;

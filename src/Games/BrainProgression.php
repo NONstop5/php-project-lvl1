@@ -47,14 +47,14 @@ function getProgressionData(): array
     ];
 }
 
-function getProgression($progressionFirstElement, $progressionStep, $progressionCount): array
+function getProgression(int $progressionFirstElement, int $progressionStep, int $progressionCount): array
 {
     $progressionLastElement = getProgressionElement($progressionFirstElement, $progressionStep, $progressionCount);
 
     return range($progressionFirstElement, $progressionLastElement, $progressionStep);
 }
 
-function getProgressionElement($progressionFirstElement, $progressionStep, $elementNumber): int
+function getProgressionElement(int $progressionFirstElement, int $progressionStep, int $elementNumber): int
 {
     return $progressionFirstElement + ($elementNumber - 1) * $progressionStep;
 }

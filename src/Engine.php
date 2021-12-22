@@ -12,7 +12,7 @@ use function cli\prompt;
 const ROUND_COUNT = 3;
 const MAX_NUMBER = 100;
 
-function runGame(Closure $getGameData, $gameDescription): void
+function runGame(Closure $getGameData, string $gameDescription): void
 {
     line('Welcome to the Brain Game!');
     $userName = prompt('May I have your name?');
