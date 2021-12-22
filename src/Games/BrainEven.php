@@ -8,9 +8,11 @@ use function App\Engine\runGame;
 
 use const App\Engine\MAX_NUMBER;
 
+const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 function run(): void
 {
-    runGame(fn() => even());
+    runGame(fn() => even(), GAME_DESCRIPTION);
 }
 
 function even(): array
@@ -20,8 +22,6 @@ function even(): array
         false => 'no',
     ];
 
-    $gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
-
     $number = rand(0, MAX_NUMBER);
     $isEven = $number % 2 === 0;
 
@@ -29,7 +29,6 @@ function even(): array
     $correctAnswer = $booleanTextMap[$isEven];
 
     return [
-        'gameDescription' => $gameDescription,
         'question' => $question,
         'correctAnswer' => $correctAnswer,
     ];

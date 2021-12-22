@@ -8,9 +8,11 @@ use function App\Engine\runGame;
 
 use const App\Engine\MAX_NUMBER;
 
+const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
 function run(): void
 {
-    runGame(fn() => prime());
+    runGame(fn() => prime(), GAME_DESCRIPTION);
 }
 
 function prime(): array
@@ -20,16 +22,20 @@ function prime(): array
         false => 'no',
     ];
 
-    $gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $number = rand(0, MAX_NUMBER);
 
-    $number = rand(1, MAX_NUMBER);
-    $isPrime = isNumberPrime($number);
+    if ($number === 0 || $number === 1) {
+        $isPrime = false;
+    } elseif (($number === 2) || ($number === 3)) {
+        $isPrime = true;
+    } else {
+        $isPrime = isNumberPrime($number);
+    }
 
     $question = $number;
     $correctAnswer = $booleanTextMap[$isPrime];
 
     return [
-        'gameDescription' => $gameDescription,
         'question' => $question,
         'correctAnswer' => $correctAnswer,
     ];
@@ -37,7 +43,7 @@ function prime(): array
 
 function isNumberPrime(int $number): bool
 {
-    for ($n = 2; $n < $number - 1; $n++) {
+    for ($n = 2; $n <= sqrt($number); $n++) {
         if ($number % $n === 0) {
             return false;
         }

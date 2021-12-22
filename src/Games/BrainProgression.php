@@ -10,23 +10,21 @@ const PROGRESSION_MIN_COUNT = 5;
 const PROGRESSION_MAX_COUNT = 10;
 const PROGRESSION_MIN_STEP = 1;
 const PROGRESSION_MAX_STEP = 5;
+const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
 function run(): void
 {
-    runGame(fn() => progression());
+    runGame(fn() => progression(), GAME_DESCRIPTION);
 }
 
 function progression(): array
 {
-    $gameDescription = 'What number is missing in the progression?';
-
     [
         'question' => $question,
         'correctAnswer' => $correctAnswer,
     ] = getProgressionData();
 
     return [
-        'gameDescription' => $gameDescription,
         'question' => $question,
         'correctAnswer' => (string)$correctAnswer,
     ];
@@ -34,28 +32,29 @@ function progression(): array
 
 function getProgressionData(): array
 {
-    $numbers = [];
-    $answerNumber = null;
     $progressionCount = rand(PROGRESSION_MIN_COUNT, PROGRESSION_MAX_COUNT);
     $progressionStep = rand(PROGRESSION_MIN_STEP, PROGRESSION_MAX_STEP);
     $progressionMissingNumber = rand(1, $progressionCount);
-    $progressionStartValue = rand(1, ($progressionCount * PROGRESSION_MAX_STEP));
+    $progressionFirstElement = rand(1, ($progressionCount * PROGRESSION_MAX_STEP));
 
-    $number = $progressionStartValue;
-
-    for ($n = 1; $n <= $progressionCount; $n++) {
-        if ($n === $progressionMissingNumber) {
-            $numbers[] = '..';
-            $answerNumber = $number;
-        } else {
-            $numbers[] = $number;
-        }
-
-        $number += $progressionStep;
-    }
+    $progression = getProgression($progressionFirstElement, $progressionStep, $progressionCount);
+    $correctAnswer = getProgressionElement($progressionFirstElement, $progressionStep, $progressionMissingNumber);
+    $progression[$progressionMissingNumber - 1] = '...';
 
     return [
-        'question' => implode(' ', $numbers),
-        'correctAnswer' => $answerNumber,
+        'question' => implode(' ', $progression),
+        'correctAnswer' => $correctAnswer,
     ];
+}
+
+function getProgression($progressionFirstElement, $progressionStep, $progressionCount): array
+{
+    $progressionLastElement = getProgressionElement($progressionFirstElement, $progressionStep, $progressionCount);
+
+    return range($progressionFirstElement, $progressionLastElement, $progressionStep);
+}
+
+function getProgressionElement($progressionFirstElement, $progressionStep, $elementNumber): int
+{
+    return $progressionFirstElement + ($elementNumber - 1) * $progressionStep;
 }

@@ -8,15 +8,15 @@ use function App\Engine\runGame;
 
 use const App\Engine\MAX_NUMBER;
 
+const GAME_DESCRIPTION = 'What is the result of the expression?';
+
 function run(): void
 {
-    runGame(fn() => calc());
+    runGame(fn() => calc(), GAME_DESCRIPTION);
 }
 
 function calc(): array
 {
-    $gameDescription = 'What is the result of the expression?';
-
     $operators = [
         '+',
         '-',
@@ -38,7 +38,6 @@ function calc(): array
     $correctAnswer = $expressionResult;
 
     return [
-        'gameDescription' => $gameDescription,
         'question' => $question,
         'correctAnswer' => (string)$correctAnswer,
     ];
