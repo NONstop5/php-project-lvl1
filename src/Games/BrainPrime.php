@@ -12,10 +12,10 @@ const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answe
 
 function run(): void
 {
-    runGame(fn() => prime(), GAME_DESCRIPTION);
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
-function prime(): array
+function generateData(): array
 {
     $booleanTextMap = [
         true => 'yes',
@@ -24,13 +24,7 @@ function prime(): array
 
     $number = rand(0, MAX_NUMBER);
 
-    if ($number === 0 || $number === 1) {
-        $isPrime = false;
-    } elseif (($number === 2) || ($number === 3)) {
-        $isPrime = true;
-    } else {
-        $isPrime = isNumberPrime($number);
-    }
+    $isPrime = isNumberPrime($number);
 
     $question = $number;
     $correctAnswer = $booleanTextMap[$isPrime];
@@ -43,9 +37,15 @@ function prime(): array
 
 function isNumberPrime(int $number): bool
 {
-    for ($n = 2; $n <= sqrt($number); $n++) {
-        if ($number % $n === 0) {
-            return false;
+    if ($number === 0 || $number === 1) {
+        return false;
+    } elseif (($number === 2) || ($number === 3)) {
+        return true;
+    } else {
+        for ($n = 2; $n <= sqrt($number); $n++) {
+            if ($number % $n === 0) {
+                return false;
+            }
         }
     }
 

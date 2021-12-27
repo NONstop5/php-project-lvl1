@@ -14,23 +14,10 @@ const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
 function run(): void
 {
-    runGame(fn() => progression(), GAME_DESCRIPTION);
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
-function progression(): array
-{
-    [
-        'question' => $question,
-        'correctAnswer' => $correctAnswer,
-    ] = getProgressionData();
-
-    return [
-        'question' => $question,
-        'correctAnswer' => (string)$correctAnswer,
-    ];
-}
-
-function getProgressionData(): array
+function generateData(): array
 {
     $progressionCount = rand(PROGRESSION_MIN_COUNT, PROGRESSION_MAX_COUNT);
     $progressionStep = rand(PROGRESSION_MIN_STEP, PROGRESSION_MAX_STEP);
@@ -43,7 +30,7 @@ function getProgressionData(): array
 
     return [
         'question' => implode(' ', $progression),
-        'correctAnswer' => $correctAnswer,
+        'correctAnswer' => (string)$correctAnswer,
     ];
 }
 

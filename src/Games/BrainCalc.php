@@ -12,33 +12,39 @@ const GAME_DESCRIPTION = 'What is the result of the expression?';
 
 function run(): void
 {
-    runGame(fn() => calc(), GAME_DESCRIPTION);
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
-function calc(): array
+function generateData(): array
 {
     $operators = [
         '+',
         '-',
         '*',
     ];
-    $operations = [
-        fn($operand1, $operand2) => $operand1 + $operand2,
-        fn($operand1, $operand2) => $operand1 - $operand2,
-        fn($operand1, $operand2) => $operand1 * $operand2,
-    ];
 
     $operand1 = rand(0, MAX_NUMBER);
     $operand2 = rand(0, MAX_NUMBER);
-    $operatorNumber = rand(0, (count($operators) - 1));
-    $operator = $operators[$operatorNumber];
-    $expressionResult = $operations[$operatorNumber]($operand1, $operand2);
+    $operatorIndex = rand(0, (count($operators) - 1));
+    $operator = $operators[$operatorIndex];
 
     $question = "{$operand1} {$operator} {$operand2}";
-    $correctAnswer = $expressionResult;
+    $correctAnswer = calculate($operand1, $operator, $operand2);
 
     return [
         'question' => $question,
         'correctAnswer' => (string)$correctAnswer,
     ];
+}
+
+function calculate(int $operand1, string $operator, int $operand2): int
+{
+    switch ($operator) {
+        case '+':
+            return $operand1 + $operand2;
+        case '-':
+            return $operand1 - $operand2;
+        case '*':
+            return $operand1 * $operand2;
+    }
 }

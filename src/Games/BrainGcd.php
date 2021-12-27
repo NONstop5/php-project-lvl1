@@ -12,38 +12,25 @@ const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 function run(): void
 {
-    runGame(fn() => gcd(), GAME_DESCRIPTION);
-}
-
-function gcd(): array
-{
-    [
-        'question' => $question,
-        'correctAnswer' => $correctAnswer,
-    ] = generateData();
-
-    return [
-        'question' => $question,
-        'correctAnswer' => (string)$correctAnswer,
-    ];
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
 function generateData(): array
 {
     $number1 = null;
     $number2 = null;
-    $node = null;
+    $correctAnswer = null;
 
-    while ($node === null) {
+    while ($correctAnswer === null) {
         $number1 = rand(0, MAX_NUMBER);
         $number2 = rand(0, MAX_NUMBER);
 
-        $node = getGreatestCommonDivisor($number1, $number2);
+        $correctAnswer = getGreatestCommonDivisor($number1, $number2);
     }
 
     return [
         'question' => "{$number1} {$number2}",
-        'correctAnswer' => $node,
+        'correctAnswer' => (string)$correctAnswer,
     ];
 }
 

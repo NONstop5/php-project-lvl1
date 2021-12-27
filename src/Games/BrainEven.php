@@ -12,10 +12,10 @@ const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "
 
 function run(): void
 {
-    runGame(fn() => even(), GAME_DESCRIPTION);
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
-function even(): array
+function generateData(): array
 {
     $booleanTextMap = [
         true => 'yes',
@@ -23,13 +23,17 @@ function even(): array
     ];
 
     $number = rand(0, MAX_NUMBER);
-    $isEven = $number % 2 === 0;
 
     $question = $number;
-    $correctAnswer = $booleanTextMap[$isEven];
+    $correctAnswer = $booleanTextMap[isEven($number)];
 
     return [
         'question' => $question,
         'correctAnswer' => $correctAnswer,
     ];
+}
+
+function isEven(int $number): bool
+{
+    return $number % 2 === 0;
 }
