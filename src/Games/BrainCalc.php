@@ -25,7 +25,7 @@ function generateData(): array
 
     $operand1 = rand(0, MAX_NUMBER);
     $operand2 = rand(0, MAX_NUMBER);
-    $operatorIndex = rand(0, (count($operators) - 1));
+    $operatorIndex = array_rand($operators);
     $operator = $operators[$operatorIndex];
 
     $question = "{$operand1} {$operator} {$operand2}";
@@ -44,7 +44,7 @@ function calculate(int $operand1, string $operator, int $operand2): int
             return $operand1 + $operand2;
         case '-':
             return $operand1 - $operand2;
-        case '*':
+        default:
             return $operand1 * $operand2;
     }
 }
