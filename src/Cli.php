@@ -11,7 +11,7 @@ function welcome(): string
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
-    line("Hello1, %s!", $name);
+    line("Hello, %s!", $name);
 
     return $name;
 }
