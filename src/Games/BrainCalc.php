@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Games\BrainCalc;
 
+use RuntimeException;
+
 use function App\Engine\runGame;
 
 use const App\Engine\MAX_NUMBER;
@@ -44,7 +46,9 @@ function calculate(int $operand1, string $operator, int $operand2): int
             return $operand1 + $operand2;
         case '-':
             return $operand1 - $operand2;
-        default:
+        case '*':
             return $operand1 * $operand2;
+        default:
+            throw new RuntimeException('Unknown operator!');
     }
 }
