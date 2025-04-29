@@ -1,7 +1,23 @@
-parameters:
-  level: 5
-  paths:
-    - src
+includes:
+    - vendor/hexlet/phpstan-fp/extension.neon
 
-  excludePaths:
-    - code/vendor
+parameters:
+    level: 8
+    paths:
+        - bin
+        - src
+
+    excludePaths:
+        - vendor
+
+    reportUnmatchedIgnoredErrors: false
+
+    phpstanFunctionalProgramming:
+        disallowLoops: false
+        disallowThrow: false
+        disallowUnusedExpression: false
+        disallowVariablesMutation: false
+        disallowMutatingFunctions: false
+
+    ignoreErrors:
+        -   identifier: missingType.iterableValue

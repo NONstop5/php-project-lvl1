@@ -14,7 +14,7 @@ lint-fix:
 	composer exec --verbose phpcbf -- --standard=PSR12 --colors src bin
 
 phpstan:
-	vendor/bin/phpstan analyse
+	composer exec --verbose phpstan
 
 brain-games:
 	./bin/brain-games
